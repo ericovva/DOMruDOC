@@ -31,7 +31,10 @@ Output:
             "promoTime": int, //days count
             "listImage": url_string,
             "detailImage: url_string,
-            "price": int, //int for devision by 100
+            "cost": {
+                "full": int, //int for devision by 100
+                "withDiscount": int //int for devision by 100
+            },
             "features": [
                 {
                     "title": string,

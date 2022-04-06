@@ -96,7 +96,7 @@ Output:
 no output, only http status code
 ```
 
-<h2> PUT /personal-offers-onboarding </h2>
+<h2> GET /personal-offers-onboarding </h2>
 
 Input:
 ```

@@ -44,7 +44,7 @@ Output:
 }
 ```
 
-<h2> PUT /personal-offer-buy/offer_id </h2>
+<h2> PUT /personal-offers-buy/offer_id </h2>
 
 Input:
 ```
@@ -57,7 +57,7 @@ Output:
 no output, only http status code
 ```
 
-<h2> GET /personal-offer-not-interesting/ </h2>
+<h2> GET /personal-offers-not-interesting/ </h2>
 
 Input:
 ```
@@ -78,7 +78,7 @@ Output:
 }
 ```
 
-<h2> PUT /personal-offer-not-interesting/offer_id </h2>
+<h2> PUT /personal-offers-not-interesting/offer_id </h2>
 
 Input:
 ```
@@ -91,4 +91,25 @@ Output:
 
 ```
 no output, only http status code
+```
+
+<h2> PUT /personal-offers-onboarding </h2>
+
+Input:
+```
+no input
+```
+
+Output:
+
+```
+{
+    "slides": [
+        {
+            "title": string,
+            "description": string
+        },
+        ...
+    ]
+}
 ```

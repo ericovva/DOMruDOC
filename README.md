@@ -22,6 +22,13 @@ Output:
         },
         ...
     ],
+    "channelThemes": [
+        {
+            "id": int,
+            "title": string,
+        },
+        ...
+    ],
     "personal_offers": [
         {
             "id": int,
@@ -42,6 +49,19 @@ Output:
                 },
                 ...
             ],
+            "channels": [
+                {
+                    "id": int,
+                    "title": string,
+                    "icon": url_string,
+                    "themeId": 1
+                },
+                ...
+             ],
+            "offer_condition": {
+                "description": string,
+                "pdf": url_string,
+            }
         }
     ]
 }

@@ -1,5 +1,29 @@
 <h1>DOM.ru offers documentation</h1>
 
+<h2> GET /channel/info </h2>
+
+Input:
+```
+{
+    "providerId": int,
+    "Domain": string,
+    "id": int
+}
+```
+
+Output:
+```
+{
+  "id": int,
+  "title": string,
+  "image": url_string,
+  "themeId": int,
+  "description": string,
+  "url": url_string,
+  "button": int,
+}
+```
+
 <h2> GET /personal-offers </h2>
 
 Input:

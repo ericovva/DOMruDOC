@@ -24,7 +24,7 @@ Output:
 }
 ```
 
-<h2> GET /personal-offers </h2>
+<h2> GET /spec-offer </h2>
 
 Input:
 ```
@@ -36,7 +36,7 @@ Input:
 Output:
 ```
 {
-    "personal_offer_types": [
+    "personalOfferTypes": [
         {
             "id": int,
             "title": string,
@@ -53,7 +53,7 @@ Output:
         },
         ...
     ],
-    "personal_offers": [
+    "personalOffers": [
         {
             "id": int,
             "title": string,
@@ -91,7 +91,7 @@ Output:
 }
 ```
 
-<h2> PUT /personal-offers-buy/offer_id </h2>
+<h2> PUT /spec-offer-buy/offer_id </h2>
 
 Input:
 ```
@@ -104,7 +104,7 @@ Output:
 no output, only http status code
 ```
 
-<h2> GET /personal-offers-not-interesting/ </h2>
+<h2> GET /spec-offer-not-interesting/ </h2>
 
 Input:
 ```
@@ -125,7 +125,7 @@ Output:
 }
 ```
 
-<h2> PUT /personal-offers-not-interesting/offer_id </h2>
+<h2> PUT /spec-offer-not-interesting/offer_id </h2>
 
 Input:
 ```
@@ -140,7 +140,7 @@ Output:
 no output, only http status code
 ```
 
-<h2> GET /personal-offers-onboarding </h2>
+<h2> GET /spec-offer-onboarding </h2>
 
 Input:
 ```

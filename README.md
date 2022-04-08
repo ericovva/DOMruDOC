@@ -1,13 +1,22 @@
 <h1>DOM.ru offers documentation</h1>
 
+Вопросы:
+
+    /*
+        1) type и mode
+        2) state - это где вообще? это то же, что stepId в активации?
+        3) requestId откуда берется?
+        4) зачем передавать type в активацию?
+        5) зачем нужны другие эндпоинты по спецпредложениям, которые не описаны в этой доке?
+    */ 
+
 <h2> GET /channel/info </h2>
+Получение информации по id канала
 
 Input:
 ```
 {
-    "providerId": int,
-    "Domain": string,
-    "id": int
+    "id": int //id канала
 }
 ```
 
@@ -25,6 +34,7 @@ Output:
 ```
 
 <h2> GET /spec-offer </h2>
+Получение оферов
 
 Input:
 ```
@@ -36,12 +46,12 @@ Input:
 Output:
 ```
 {
-    "personalOfferTypes": [
+    "personalOfferTypes": [ //Акция, Промо-цена, Новинка
         {
             "id": int,
             "title": string,
-            "colorText": string, //html color code
-            "colorBg": string, //html color code
+            "textColor": string, //html color code
+            "backgroundColor": string, //html color code
 
         },
         ...
@@ -56,12 +66,15 @@ Output:
     "personalOffers": [
         {
             "id": int,
-            "title": string,
+            "name": string,
             "description": string,
-            "typeId": int,
+            "type": int, //или mode??
             "promoTime": int, //days count
-            "listImage": url_string,
-            "detailImage: url_string,
+            "image": url_string, //картинка спецпредложения в списке
+            "detailImage: url_string, //картинка спецпредложения в детальной
+            "paySum": int,
+            "textColor": string, //html color code - цвет текста на карточке
+            "backgroundColor": string, //html color code - цвет фона на карточке
             "cost": {
                 "full": int, //int for devision by 100
                 "withDiscount": int //int for devision by 100
@@ -77,12 +90,12 @@ Output:
                 {
                     "id": int,
                     "title": string,
-                    "icon": url_string,
+                    "image": url_string,
                     "themeId": 1
                 },
                 ...
              ],
-            "offer_condition": {
+            "terms": {
                 "description": string,
                 "pdf": url_string,
             }
@@ -91,20 +104,56 @@ Output:
 }
 ```
 
-<h2> PUT /spec-offer-buy/offer_id </h2>
+<h2> PUT /spec-offer/activate </h2>
+Активация оффера
 
 Input:
 ```
-no input
+{
+    "id": int, //id спецпредложения
+}
 ```
 
 Output:
 
 ```
-no output, only http status code
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
 ```
 
-<h2> GET /spec-offer-not-interesting/ </h2>
+<h2> PUT /spec-offer/deactivate </h2>
+Деактивация оффера
+
+Input:
+```
+{
+    "id": int, //id спецпредложения
+}
+```
+
+Output:
+
+```
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
+```
+
+<h2> GET /spec-offer/not-interesting/ </h2>
+Мне это не интересно - получение вариантов ответа
 
 Input:
 ```
@@ -125,12 +174,14 @@ Output:
 }
 ```
 
-<h2> PUT /spec-offer-not-interesting/offer_id </h2>
+<h2> PUT /spec-offer/not-interesting/offer_id </h2>
+Мне это не интересно - отправка ответа
 
 Input:
 ```
 {
-    "quizAnswerId": int
+    "quizAnswerId": int, //или None, если Другое
+    "otherText": string //или None, если есть quizAnswerId
 }
 ```
 
@@ -140,7 +191,8 @@ Output:
 no output, only http status code
 ```
 
-<h2> GET /spec-offer-onboarding </h2>
+<h2> GET /spec-offer/onboarding </h2>
+Получение контента для отображения слайдов онбординга
 
 Input:
 ```

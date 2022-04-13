@@ -1,4 +1,4 @@
-<h1>DOM.ru offers documentation</h1>
+<h1>DOM.ru offers documentation (ММП)</h1>
 
 Вопросы:
 
@@ -34,6 +34,12 @@ Output:
 
 <h2> GET /spec-offer </h2>
 Получение оферов
+
+Headers:
+```
+providerId: int,
+systemId: string //Идентификатор системы МП 15 - iOS, 16 - Android
+```
 
 Input:
 ```
@@ -101,6 +107,11 @@ Output:
 
 Дергается при открытии деталки по офферу
 
+Headers:
+```
+providerId: int
+```
+
 Input:
 ```
 {
@@ -124,6 +135,11 @@ fail:
 
 <h2> POST /spec-offer/activate </h2>
 Активация оффера
+
+Headers:
+```
+providerId: int
+```
 
 Input:
 ```
@@ -155,6 +171,11 @@ fail:
 <h2> POST /spec-offer/deactivate </h2>
 Деактивация оффера
 
+Headers:
+```
+providerId: int
+```
+
 Input:
 ```
 {
@@ -178,6 +199,11 @@ fail:
 
 <h2> GET /spec-offer/not-interesting/ </h2>
 Мне это не интересно - получение вариантов ответа
+
+Headers:
+```
+providerId: int
+```
 
 Input:
 ```

@@ -3,15 +3,14 @@
 Вопросы:
 
     /*
-        1) type и mode
-        2) state - это где вообще? это то же, что stepId в активации?
-        3) requestId откуда берется?
-        4) зачем передавать type в активацию?
-        5) зачем нужны другие эндпоинты по спецпредложениям, которые не описаны в этой доке?
+        1) type и mode - не нужно - colorLabels (personalOfferTypes для сайта), время акции туда же в массив
+        6) offer-seen надо добавить (но у сайта 1 запрос по переходам по шагам) дергается когда в детальну страницу проваливается. На сайте другой запрос
     */ 
 
 <h2> GET /channel/info </h2>
 Получение информации по id канала
+
+Просто открываете ChannelDetailsFragment (если говорить про android) передав ему channelId всё остальное он подтянет и отобразит сам
 
 Input:
 ```
@@ -68,16 +67,17 @@ Output:
             "id": int,
             "name": string,
             "description": string,
-            "type": int, //или mode??
+            "shortDescription": string,
             "promoTime": int, //days count
             "image": url_string, //картинка спецпредложения в списке
-            "detailImage: url_string, //картинка спецпредложения в детальной
+            "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
             "paySum": int,
             "textColor": string, //html color code - цвет текста на карточке
             "backgroundColor": string, //html color code - цвет фона на карточке
             "cost": {
                 "full": int, //int for devision by 100
-                "withDiscount": int //int for devision by 100
+                "withDiscount": int, //int for devision by 100
+                "discDescription": string
             },
             "features": [
                 {
@@ -98,14 +98,23 @@ Output:
             "terms": {
                 "description": string,
                 "pdf": url_string,
-            }
+            },
+            "colorLabels": [ //Акция, Промо-цена, Новинка
+                {
+                    "text": string,
+                    "textColor": string, //html color code
+                    "color": string, //html color code
+                    "type": string, //or int??
+                },
+                ...
+            ]
         }
     ]
 }
 ```
 
-<h2> PUT /spec-offer/activate </h2>
-Активация оффера
+<h2> POST /spec-offer/seen </h2>
+Просмотр оффера
 
 Input:
 ```
@@ -128,7 +137,37 @@ fail:
 }
 ```
 
-<h2> PUT /spec-offer/deactivate </h2>
+<h2> POST /spec-offer/activate </h2>
+Активация оффера
+
+Input:
+```
+{
+    "id": int, //id спецпредложения
+    "requestId": int, //Идентификатор заявки спецпредложения
+    "autorenewal": int, //Автоматическое подключение после окончания срока его действия: 0 - не подключать(по умолчанию), 1 - подключать
+    "stepId": int, //Текущий шаг спецпредложения: Не просмотрено - 1348, Просмотрено - 1346, Подключено - 1344, Отключено - 1352
+    "childId": int, //id дочерней акции
+    "phone": string, //телефон абонента
+    "contactId": int //????
+}
+```
+
+Output:
+
+```
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
+```
+
+<h2> POST /spec-offer/deactivate </h2>
 Деактивация оффера
 
 Input:

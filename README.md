@@ -43,9 +43,7 @@ systemId: string //Идентификатор системы МП 15 - iOS, 16 -
 
 Input:
 ```
-{
-    "userId": int
-}
+no input
 ```
 
 Output:

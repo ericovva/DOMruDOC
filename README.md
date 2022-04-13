@@ -65,6 +65,7 @@ Output:
         "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
         "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
         "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
+        "autorenewal": boolean,
         "cost": {
             "full": int, //int for devision by 100
             "withDiscount": int, //int for devision by 100

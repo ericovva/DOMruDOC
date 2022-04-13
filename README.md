@@ -58,6 +58,7 @@ Output:
             "description": string,
             "shortDescription": string,
             "promoTime": int, //days count
+            "state": int, //stepId
             "image": url_string, //картинка спецпредложения в списке
             "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
             "paySum": int,

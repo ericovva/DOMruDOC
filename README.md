@@ -96,7 +96,8 @@ Output:
                     "type": string, //or int??
                 },
                 ...
-            ]
+            ],
+            "childOffers": [<personalOffers Object>]
         }
     ]
 }

@@ -45,23 +45,6 @@ Input:
 Output:
 ```
 {
-    "personalOfferTypes": [ //Акция, Промо-цена, Новинка
-        {
-            "id": int,
-            "title": string,
-            "textColor": string, //html color code
-            "backgroundColor": string, //html color code
-
-        },
-        ...
-    ],
-    "channelThemes": [
-        {
-            "id": int,
-            "title": string,
-        },
-        ...
-    ],
     "personalOffers": [
         {
             "id": int,

@@ -64,6 +64,10 @@ Output:
             "paySum": int,
             "textColor": string, //html color code - цвет текста на карточке
             "backgroundColor": string, //html color code - цвет фона на карточке
+            "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+            "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
+            "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
+            "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
             "cost": {
                 "full": int, //int for devision by 100
                 "withDiscount": int, //int for devision by 100

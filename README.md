@@ -66,6 +66,7 @@ Output:
         "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
         "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
         "autorenewal": boolean,
+        "requestId": int,
         "cost": {
             "full": int, //int for devision by 100
             "withDiscount": int, //int for devision by 100
@@ -83,7 +84,7 @@ Output:
                 "id": int,
                 "title": string,
                 "image": url_string,
-                "themeId": int,
+                "themeId": int
             },
             ...
          ],

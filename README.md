@@ -242,5 +242,13 @@ Input:
 Output:
 
 ```
-no output, only http status code
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
 ```

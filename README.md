@@ -48,62 +48,60 @@ no input
 
 Output:
 ```
-{
-    "personalOffers": [
-        {
-            "id": int,
-            "name": string,
+[
+    {
+        "id": int,
+        "name": string,
+        "description": string,
+        "shortDescription": string,
+        "promoTime": int, //days count
+        "state": int, //stepId
+        "image": url_string, //картинка спецпредложения в списке
+        "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
+        "paySum": int,
+        "textColor": string, //html color code - цвет текста на карточке
+        "backgroundColor": string, //html color code - цвет фона на карточке
+        "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+        "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
+        "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
+        "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
+        "cost": {
+            "full": int, //int for devision by 100
+            "withDiscount": int, //int for devision by 100
+            "discDescription": string
+        },
+        "features": [
+            {
+                "title": string,
+                "icon": url_string,
+            },
+            ...
+        ],
+        "channels": [
+            {
+                "id": int,
+                "title": string,
+                "image": url_string,
+                "themeId": 1
+            },
+            ...
+         ],
+        "terms": {
             "description": string,
-            "shortDescription": string,
-            "promoTime": int, //days count
-            "state": int, //stepId
-            "image": url_string, //картинка спецпредложения в списке
-            "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
-            "paySum": int,
-            "textColor": string, //html color code - цвет текста на карточке
-            "backgroundColor": string, //html color code - цвет фона на карточке
-            "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
-            "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
-            "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
-            "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
-            "cost": {
-                "full": int, //int for devision by 100
-                "withDiscount": int, //int for devision by 100
-                "discDescription": string
+            "pdf": url_string,
+        },
+        "colorLabels": [ //Акция, Промо-цена, Новинка
+            {
+                "text": string,
+                "textColor": string, //html color code
+                "color": string, //html color code
+                "type": string, //or int??
             },
-            "features": [
-                {
-                    "title": string,
-                    "icon": url_string,
-                },
-                ...
-            ],
-            "channels": [
-                {
-                    "id": int,
-                    "title": string,
-                    "image": url_string,
-                    "themeId": 1
-                },
-                ...
-             ],
-            "terms": {
-                "description": string,
-                "pdf": url_string,
-            },
-            "colorLabels": [ //Акция, Промо-цена, Новинка
-                {
-                    "text": string,
-                    "textColor": string, //html color code
-                    "color": string, //html color code
-                    "type": string, //or int??
-                },
-                ...
-            ],
-            "childOffers": [<personalOffers Object>]
-        }
-    ]
-}
+            ...
+        ],
+        "childOffers": [<personalOffers Object>]
+    }
+]
 ```
 
 <h2> POST /spec-offer/seen </h2>

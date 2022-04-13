@@ -214,25 +214,3 @@ Output:
 ```
 no output, only http status code
 ```
-
-<h2> GET /spec-offer/onboarding </h2>
-Получение контента для отображения слайдов онбординга
-
-Input:
-```
-no input
-```
-
-Output:
-
-```
-{
-    "slides": [
-        {
-            "title": string,
-            "description": string
-        },
-        ...
-    ]
-}
-```

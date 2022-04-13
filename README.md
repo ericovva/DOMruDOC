@@ -83,7 +83,7 @@ Output:
                 "id": int,
                 "title": string,
                 "image": url_string,
-                "themeId": 1
+                "themeId": int,
             },
             ...
          ],

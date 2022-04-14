@@ -225,6 +225,190 @@ Output:
 <h2> PUT /spec-offer/not-interesting/offer_id </h2>
 Мне это не интересно - отправка ответа
 
+Headers:
+```
+providerId: int
+```
+
+Input:
+```
+{
+    "quizAnswerId": int, //или None, если Другое
+    "otherText": string //или None, если есть quizAnswerId
+}
+```
+
+Output:
+
+```
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
+```
+
+
+<h1>DOM.ru offers documentation (САЙТ)</h1>
+
+
+<h2> GET /spec-offer </h2>
+Получение оферов
+
+Headers:
+```
+providerId: int,
+Domain: string
+```
+
+Input:
+```
+no input
+```
+
+Output:
+```
+[
+    {
+        "id": int,
+        "stepId": int,
+        "title": string,
+        "description": string,
+        "shortDescription": string,
+        "requestId": int,
+        "promoTime": int, //days count
+        "picture": { //картинка спецпредложения в списке
+            "url": string,
+            "urlWebp": string,
+        }, 
+        "detailPictures: [ //картинки (слайдер) спецпредложения в детальной
+            {
+                "url": url_string,
+                "urlWebp": url_string
+            },
+            ...
+        ],
+        "paySum": int,
+        "colorBackground": string, //rgb(x,y,z) - цвет фона на карточке
+        "colorText": string, //rgb(x,y,z) - цвет текста на карточке
+        "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+        "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
+        "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
+        "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
+        "autorenewal": boolean,
+        "tvPackageId": int,
+        "tvPackageIds": [ int ],
+        "cost": {
+            "full": int, //int for devision by 100
+            "withDiscount": int, //int for devision by 100
+            "discDescription": string
+        },
+        "features": [
+            {
+                "title": string,
+                "icon": url_string,
+            },
+            ...
+        ],
+        "channels": [
+            {
+                "id": int,
+                "title": string,
+                "image": url_string,
+                "themeId": int
+            },
+            ...
+         ],
+        "terms": {
+            "description": string,
+            "pdf": url_string,
+        },
+        "colorLabels": [ //Акция, Промо-цена, Новинка
+            {
+                "text": string,
+                "textColor": string, //html color code
+                "color": string, //html color code
+                "type": string, //or int??
+            },
+            ...
+        ],
+        "childOffers": [<personalOffers Object>]
+    }
+]
+```
+
+<h2> POST /spec-offer/offer_id </h2>
+Смена шага оффера (просмотр, активация, деактивация)
+
+Headers:
+```
+providerId: int,
+Domain: string
+```
+
+Input:
+```
+{
+    "id": int, //id спецпредложения
+    "currentStep": int
+}
+```
+
+Output (?):
+
+```
+success:
+{
+  "result": 1
+}
+fail:
+{
+  "billingCode": "UNKNOWN",
+  "message": "Неизвестная ошибка"
+}
+```
+
+<h2> GET /spec-offer/not-interesting/ </h2>
+Мне это не интересно - получение вариантов ответа
+
+Headers:
+```
+providerId: int,
+Domain: string
+```
+
+Input:
+```
+no input
+```
+
+Output:
+
+```
+{
+    "quizAnswers": [
+        {   
+            "id": int,
+            "title": string
+        },
+        ...
+    ]
+}
+```
+
+<h2> PUT /spec-offer/not-interesting/offer_id </h2>
+Мне это не интересно - отправка ответа
+
+Headers:
+```
+providerId: int,
+Domain: string
+```
+
 Input:
 ```
 {

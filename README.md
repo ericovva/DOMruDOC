@@ -48,22 +48,22 @@ Output:
         "name": string,
         "description": string,
         "shortDescription": string,
-        "promoTime": int, //days count
         "state": int, //stepId
         "image": url_string, //картинка спецпредложения в списке
         "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
         "paySum": int,
-        "textColor": string, //html color code - цвет текста на карточке
-        "backgroundColor": string, //html color code - цвет фона на карточке
-        "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+        "textColor": string, //hex color code - цвет текста на карточке
+        "backgroundColor": string, //hex color code - цвет фона на карточке
+        "background": string, //hex color code
+        "paySum": number, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
         "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
         "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
         "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
         "autorenewal": boolean,
         "requestId": int,
         "cost": {
-            "full": int, //int for devision by 100
-            "withDiscount": int, //int for devision by 100
+            "full": float,
+            "withDiscount": float, 
             "discDescription": string
         },
         "features": [
@@ -89,9 +89,9 @@ Output:
         "colorLabels": [ //Акция, Промо-цена, Новинка
             {
                 "text": string,
-                "textColor": string, //html color code
-                "color": string, //html color code
-                "type": string, //or int??
+                "textColor": string, //hex color code
+                "color": string, //hex color code
+                "type": string,
             },
             ...
         ],
@@ -292,14 +292,13 @@ Output:
             },
             ...
         ],
-        "paySum": int,
         "colorBackground": string, //rgb(x,y,z) - цвет фона на карточке
         "colorText": string, //rgb(x,y,z) - цвет текста на карточке
-        "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+        "paySum": float, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
         "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
         "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
         "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
-        "autorenewal": boolean,
+        "autorenewal": int,
         "tvPackageId": int,
         "tvPackageIds": [ int ],
         "cost": {
@@ -330,8 +329,8 @@ Output:
         "colorLabels": [ //Акция, Промо-цена, Новинка
             {
                 "text": string,
-                "textColor": string, //html color code
-                "color": string, //html color code
+                "textColor": string, //hex color code
+                "color": string, //hex color code
                 "type": string, //or int??
             },
             ...

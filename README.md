@@ -51,7 +51,6 @@ Output:
         "state": int, //stepId
         "image": url_string, //картинка спецпредложения в списке
         "images: [ url_string, ... ], //картинки (слайдер) спецпредложения в детальной
-        "paySum": int,
         "textColor": string, //hex color code - цвет текста на карточке
         "backgroundColor": string, //hex color code - цвет фона на карточке
         "background": string, //hex color code
@@ -280,7 +279,6 @@ Output:
         "description": string,
         "shortDescription": string,
         "requestId": int,
-        "promoTime": int, //days count
         "picture": { //картинка спецпредложения в списке
             "url": string,
             "urlWebp": string,
@@ -294,7 +292,7 @@ Output:
         ],
         "colorBackground": string, //rgb(x,y,z) - цвет фона на карточке
         "colorText": string, //rgb(x,y,z) - цвет текста на карточке
-        "paySum": float, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
+        "paySum": int, //Сумма, которой не хватает на балансе чтобы активировать СП (для сп Оптом дешевле)
         "closeDate": string, //Дата, до которой будет подключено спецпредложение если подключить сейчас (присутствует у спецпредложений с макс. сроком действия)
         "closeDateMin":	string, //Минимальная дата, с которой можно будет отключить спецпредложение (заполнено у спецпредложений с мин.сроком действия)
         "isActiveNextButton": boolean //Флаг, активна ли кнопка перехода к следующему шагу, по умолчанию true
@@ -331,7 +329,7 @@ Output:
                 "text": string,
                 "textColor": string, //hex color code
                 "color": string, //hex color code
-                "type": string, //or int??
+                "type": string
             },
             ...
         ],
